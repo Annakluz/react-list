@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Menu from "./components/Menu.jsx";
+import { Button } from "react-bootstrap";
 
 class App extends Component {
     constructor(){
@@ -25,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <input value={this.state.nuevoItemTexto} type="text" onChange = {this.manejarCambio}/>
-        <button onClick={this.agregarALista} >ENVIAR</button>
+        <Button onClick={this.agregarALista} bsStyle="primary">ENVIAR</Button>
         
        <Menu tituloLista="Super" elementosLista= {this.state.arregloDeItems}/>
     
