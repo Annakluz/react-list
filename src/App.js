@@ -4,17 +4,37 @@ import './App.css';
 import Menu from "./components/Menu.jsx";
 
 class App extends Component {
+    constructor(){
+        super();
+        this.state = {nuevoItemTexto:"", arregloDeItems:[]}
+        this.manejarCambio = this.manejarCambio.bind(this);
+        this.agregarALista = this.agregarALista.bind(this);
+    }
+
+    agregarALista(){
+    this.state.arregloDeItems.push(this.state.nuevoItemTexto);
+    this.setState({nuevoItemTexto:""})
+    }
+
+    manejarCambio(event){
+        let inputValue = event.target.value;
+        this.setState({nuevoItemTexto:inputValue});
+    }
+
   render() {
     return (
       <div className="App">
-
-       <Menu tituloLista="Super" elementosLista = {["pera", "berenjena"]}/>
-       <Menu tituloLista="Carros" elementosLista = {["VW" , "Jeep", "Corvette" ]}/>    
+        <input value={this.state.nuevoItemTexto} type="text" onChange = {this.manejarCambio}/>
+        <button onClick={this.agregarALista} >ENVIAR</button>
+        
+       <Menu tituloLista="Super" elementosLista= {this.state.arregloDeItems}/>
+    
+        </div>
         
         
         
      
-      </div>
+      
     );
   }
 }
